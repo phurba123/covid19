@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-stats',
@@ -17,9 +18,16 @@ export class StatsComponent implements OnInit {
 
   public getCovidData()
   {
+
+    // subscribing to returned observable by http client for data's
     this.app.getCovidDatas().subscribe((res)=>
     {
-      console.log(res)
+      console.log(res);
+      this.covidData=res
+    },
+    (err)=>
+    {
+      console.log(err)
     })
   }
 

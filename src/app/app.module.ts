@@ -8,13 +8,15 @@ import { StatsComponent } from './stats/stats.component';
 import { SharedModule } from './shared/shared.module';
 import { AppService } from './app.service';
 
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { MyJsonPipe } from './my-json.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    StatsComponent
+    StatsComponent,
+    MyJsonPipe
   ],
   imports: [
     BrowserModule,

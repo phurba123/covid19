@@ -1,1 +1,7 @@
 <app-nav [CurrentComp]="'stats'"></app-nav>
+
+<div *ngIf="covidData">
+    <div *ngFor="let data of covidData | myJson;let i=index">
+        {{data.state}}
+    </div>
+</div>
