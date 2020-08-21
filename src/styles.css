@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* universal selector */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: rgba(250,250,250,1);
+    color: rgba(0,0,0,1);
+}
+
+/* font family for all headers */
+.header-font
+{
+    font-family: 'Kanit', sans-serif;
+}
+
+/* font family for all paragraphs */
+.p-font
+{
+    font-family: 'Montserrat', sans-serif;
+}
