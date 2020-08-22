@@ -12,7 +12,7 @@
         <!-- covid data of all india ,using flex-->
         <div id="india-Data">
             <!-- numeric data -->
-            <div id="allIndiaData">
+            <div id="allIndiaData" class="p-font">
                 <p><span>totalCases</span> : {{indiaData.totalCases}}</p>
                 <p><span>activeCases</span> : {{indiaData.activeCases}}</p>
                 <p><span>activeCasesNew</span> : {{indiaData.activeCasesNew}}</p>
@@ -39,22 +39,25 @@
     <div id="regional" *ngIf="indiaData">
         <h2 style="text-align: center" class="header-font">State wise status</h2>
 
-        <!-- covid data of all india ,using flex-->
-        <div id="state-Data">
+        <select name="states" id="states-select" class="p-font"[(ngModel)]="currentStateSelected" (click)="stateSelected()">
+            <option *ngFor="let reg of indiaData.regionData" value="{{reg.region}}">{{reg.region}}</option>
+        </select>
+
+        <!-- covid data of all india state wise ,using flex-->
+        <div id="india-Data" *ngIf="currentStateData">
             <!-- numeric data of selected state -->
             <div id="allIndiaData">
-                <p><span>totalCases</span> : {{indiaData.totalCases}}</p>
-                <p><span>activeCases</span> : {{indiaData.activeCases}}</p>
-                <p><span>activeCasesNew</span> : {{indiaData.activeCasesNew}}</p>
-                <p><span>recovered</span> : {{indiaData.recovered}}</p>
-                <p><span>recoveredNew</span> : {{indiaData.recoveredNew}}</p>
-                <p><span>deaths</span> : {{indiaData.deaths}}</p>
-                <p><span>deathsNew</span> : {{indiaData.deathsNew}}</p>
+                <p><span>total infected</span> : {{currentStateData.totalInfected}}</p>
+                <p><span>new infected</span> : {{currentStateData.newInfected}}</p>
+                <p><span>recovered</span> : {{currentStateData.recovered}}</p>
+                <p><span>new recovered</span> : {{currentStateData.newRecovered}}</p>
+                <p><span>deaths</span> : {{currentStateData.deceased}}</p>
+                <p><span>new deaths</span> : {{currentStateData.newDeceased}}</p>
             </div>
 
             <!-- chart visualization of selected state data -->
             <div id="allIndiaChart">
-                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                <canvas baseChart [datasets]="barChartState" [labels]="barChartLabels" [options]="barChartOptions"
                     [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
                 </canvas>
             </div>
@@ -62,8 +65,8 @@
     </div>
 </main>
 
-<div *ngIf="covidData">
+<!-- <div *ngIf="covidData">
     <div *ngFor="let data of covidData | myJson;let i=index">
         {{data.state}}
     </div>
-</div>
+</div> -->

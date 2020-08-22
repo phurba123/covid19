@@ -15,7 +15,7 @@ main
 
 #india-Data #allIndiaData
 {
-    flex-basis: 50%;
+    flex-basis: 48%;
 }
 #india-Data #allIndiaData p
 {
@@ -36,6 +36,14 @@ main
 #regional
 {
     margin-top: 10vh;
+}
+
+#states-select
+{
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(128,128,128,0.7);
+    box-shadow: 1px 1px 3px 2px rgba(128,128,128,0.9)
 }
 
 @media screen and (max-width:500px)

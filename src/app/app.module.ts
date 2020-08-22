@@ -12,7 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { MyJsonPipe } from './my-json.pipe';
 
 // ng2-charts module import
-import {ChartsModule} from 'ng2-charts'
+import {ChartsModule} from 'ng2-charts';
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ChartsModule} from 'ng2-charts'
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    FormsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
