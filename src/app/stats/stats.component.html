@@ -1,5 +1,67 @@
 <app-nav [CurrentComp]="'stats'"></app-nav>
 
+<!-- <p *ngIf="indiaData">{{indiaData.recovered}}</p> -->
+<main>
+
+    <!-- all india status -->
+    <div id="India" *ngIf="indiaData">
+
+        <!-- heading -->
+        <h2 style="text-align: center" class="header-font">All India Status</h2>
+
+        <!-- covid data of all india ,using flex-->
+        <div id="india-Data">
+            <!-- numeric data -->
+            <div id="allIndiaData">
+                <p><span>totalCases</span> : {{indiaData.totalCases}}</p>
+                <p><span>activeCases</span> : {{indiaData.activeCases}}</p>
+                <p><span>activeCasesNew</span> : {{indiaData.activeCasesNew}}</p>
+                <p><span>recovered</span> : {{indiaData.recovered}}</p>
+                <p><span>recoveredNew</span> : {{indiaData.recoveredNew}}</p>
+                <p><span>deaths</span> : {{indiaData.deaths}}</p>
+                <p><span>deathsNew</span> : {{indiaData.deathsNew}}</p>
+            </div>
+
+            <!-- chart visualization of india data -->
+            <div id="allIndiaChart">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </div>
+        </div>
+
+        <!-- last updated -->
+        <p style="font-weight: 100;font-size: 12px;color:gray;margin-top: 1vh;">last updated : {{indiaData.lastUpdatedAtApify | date:'long'}}</p>
+
+    </div>
+
+    <!-- specific locations -->
+    <div id="regional" *ngIf="indiaData">
+        <h2 style="text-align: center" class="header-font">State wise status</h2>
+
+        <!-- covid data of all india ,using flex-->
+        <div id="state-Data">
+            <!-- numeric data of selected state -->
+            <div id="allIndiaData">
+                <p><span>totalCases</span> : {{indiaData.totalCases}}</p>
+                <p><span>activeCases</span> : {{indiaData.activeCases}}</p>
+                <p><span>activeCasesNew</span> : {{indiaData.activeCasesNew}}</p>
+                <p><span>recovered</span> : {{indiaData.recovered}}</p>
+                <p><span>recoveredNew</span> : {{indiaData.recoveredNew}}</p>
+                <p><span>deaths</span> : {{indiaData.deaths}}</p>
+                <p><span>deathsNew</span> : {{indiaData.deathsNew}}</p>
+            </div>
+
+            <!-- chart visualization of selected state data -->
+            <div id="allIndiaChart">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</main>
+
 <div *ngIf="covidData">
     <div *ngFor="let data of covidData | myJson;let i=index">
         {{data.state}}

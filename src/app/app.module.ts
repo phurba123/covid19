@@ -9,7 +9,10 @@ import { SharedModule } from './shared/shared.module';
 import { AppService } from './app.service';
 
 import {HttpClientModule} from '@angular/common/http';
-import { MyJsonPipe } from './my-json.pipe'
+import { MyJsonPipe } from './my-json.pipe';
+
+// ng2-charts module import
+import {ChartsModule} from 'ng2-charts'
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { MyJsonPipe } from './my-json.pipe'
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
