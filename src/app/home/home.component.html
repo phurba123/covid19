@@ -6,12 +6,13 @@
     <!-- heading banner for app -->
     <header>
         <h1 class="header-font">Get updates on <span id="span-heading">covid19</span></h1>
+        <button class="p-font" [routerLink]="['/stats']">view</button>
     </header>
 
     <!-- section 1 -->
     <section class="display">
         <div class="flex-item-left">
-            <img src="https://www.mathsisfun.com/data/images/data-types.svg" alt="">
+            <img src="../../assets/ex-data.png" alt="">
         </div>
 
         <div class="flex-item-right">
@@ -23,14 +24,19 @@
     <section class="display">
         <div class="flex-item-left">
 
-            <p class="p-font">Get data related to covid19 with ease</p>
+            <p class="p-font">Visualize data through chart</p>
         </div>
 
         <div class="flex-item-right">
-            <img src="https://www.mathsisfun.com/data/images/data-types.svg" alt="">
+            <img src="../../assets/ex-chart.png" alt="">
 
         </div>
 
     </section>
 
 </main>
+
+<!-- footer of home page -->
+<footer class="p-font">
+    <p>Credit to covid19India and apify for the api of covid data.This project has been developed as an assignment project for Tripaxy.</p>
+</footer>

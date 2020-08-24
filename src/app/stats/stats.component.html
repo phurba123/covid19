@@ -13,7 +13,7 @@
         <div id="india-Data">
             <!-- numeric data -->
             <div id="allIndiaData" class="p-font">
-                <p><span>totalCases</span> : {{indiaData.totalCases}}</p>
+                <p style="margin-top: 4vh;"><span>totalCases</span> : {{indiaData.totalCases}}</p>
                 <p><span>activeCases</span> : {{indiaData.activeCases}}</p>
                 <p><span>activeCasesNew</span> : {{indiaData.activeCasesNew}}</p>
                 <p><span>recovered</span> : {{indiaData.recovered}}</p>
@@ -31,7 +31,8 @@
         </div>
 
         <!-- last updated -->
-        <p style="font-weight: 100;font-size: 12px;color:gray;margin-top: 1vh;">last updated : {{indiaData.lastUpdatedAtApify | date:'long'}}</p>
+        <p style="font-weight: 100;font-size: 12px;color:gray;margin-top: 1vh;">last updated :
+            {{indiaData.lastUpdatedAtApify | date:'long'}}</p>
 
     </div>
 
@@ -39,7 +40,7 @@
     <div id="regional" *ngIf="indiaData">
         <h2 style="text-align: center" class="header-font">State wise status</h2>
 
-        <select name="states" id="states-select" class="p-font"[(ngModel)]="currentStateSelected" (click)="stateSelected()">
+        <select name="states" class="p-font user-select" [(ngModel)]="currentStateSelected" (click)="stateSelected()">
             <option *ngFor="let reg of indiaData.regionData" value="{{reg.region}}">{{reg.region}}</option>
         </select>
 
@@ -47,18 +48,56 @@
         <div id="india-Data" *ngIf="currentStateData">
             <!-- numeric data of selected state -->
             <div id="allIndiaData">
-                <p><span>total infected</span> : {{currentStateData.totalInfected}}</p>
-                <p><span>new infected</span> : {{currentStateData.newInfected}}</p>
-                <p><span>recovered</span> : {{currentStateData.recovered}}</p>
-                <p><span>new recovered</span> : {{currentStateData.newRecovered}}</p>
-                <p><span>deaths</span> : {{currentStateData.deceased}}</p>
-                <p><span>new deaths</span> : {{currentStateData.newDeceased}}</p>
+                <!-- current state name -->
+                <p class="header-font" style="margin-bottom: 4vh;">{{currentStateData.region}}</p>
+
+                <div class="p-font">
+                    <p><span>total infected</span> : {{currentStateData.totalInfected}}</p>
+                    <p><span>new infected</span> : {{currentStateData.newInfected}}</p>
+                    <p><span>recovered</span> : {{currentStateData.recovered}}</p>
+                    <p><span>new recovered</span> : {{currentStateData.newRecovered}}</p>
+                    <p><span>deaths</span> : {{currentStateData.deceased}}</p>
+                    <p><span>new deaths</span> : {{currentStateData.newDeceased}}</p>
+                </div>
             </div>
 
             <!-- chart visualization of selected state data -->
             <div id="allIndiaChart">
                 <canvas baseChart [datasets]="barChartState" [labels]="barChartLabels" [options]="barChartOptions"
                     [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </div>
+        </div>
+
+        <h2 class="header-font" style="text-align: center;margin-top: 4vh;">{{currentStateData.region}} district status
+        </h2>
+
+        <!-- district selection options -->
+        <select *ngIf="currentStateDistricts.length>0" name="" id="district-selection" class="user-select p-font"
+            [(ngModel)]="currentDistrictName" (click)="currentDistrictSelection()">
+            <option *ngFor="let district of currentStateDistricts" value="{{district.name}}">{{district.name}}</option>
+        </select>
+
+        <!-- covid data of currently selected district ,using flex-->
+        <div id="india-Data" *ngIf="currentDistrictSelected">
+            <!-- numeric data of selected district -->
+            <div id="allIndiaData">
+                <!-- current state name -->
+                <p class="header-font" style="margin-bottom: 4vh;">{{currentDistrictSelected.name}}</p>
+
+                <div class="p-font">
+                    <p><span>total infected</span> : {{currentDistrictSelected.value.active}}</p>
+                    <p><span>recovered</span> : {{currentDistrictSelected.value.recovered}}</p>
+                    <p><span>deaths</span> : {{currentDistrictSelected.value.deceased}}</p>
+                </div>
+
+            </div>
+
+            <!-- chart visualization of selected state data -->
+            <div id="allIndiaChart">
+                <canvas baseChart [datasets]="barChartDistrict" [labels]="barChartLabelsDistrict"
+                    [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                    [chartType]="barChartType">
                 </canvas>
             </div>
         </div>

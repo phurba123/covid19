@@ -2,12 +2,12 @@
 <!-- navigation -->
 <nav>
     <!-- nav-brand -->
-    <a id="nav-brand">covid19</a>
+    <a id="nav-brand" [routerLink]="['/home']">covid19</a>
 
     <!-- navigation links -->
     <div id="navigations">
 
-        <ul id="nav-bar">
+        <ul id="nav-bar" class="p-font">
             <li class="nav-items">
                 <a class="nav-links" [ngClass]="isHomeActive?'active':''" [routerLink]="['/home']">Home</a>
             </li>
