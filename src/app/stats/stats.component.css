@@ -46,6 +46,41 @@ main
     box-shadow: 1px 1px 3px 2px rgba(128,128,128,0.9)
 }
 
+#my-table
+{
+    width: 60%;
+    margin: 2vh auto;
+    max-height: 60vh;
+    overflow-y: scroll;
+    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.9);
+}
+table
+{
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    border-collapse: separate;
+    border:2px solid gray;
+    overflow-x:scroll;
+}
+
+th,td
+{
+    border:1px solid rgba(0,0,0,1);
+    text-align: center;
+    padding: 0.5rem 1rem;
+}
+
+th
+{
+    color:rgba(250,250,250,0.6);
+    font-size: 1.3rem;
+}
+td
+{
+    font-size: 1rem;
+    color: rgba(250,250,250,1);
+}
+
 @media screen and (max-width:500px)
 {
     #india-Data #allIndiaData
@@ -61,5 +96,24 @@ main
     #india-Data #allIndiaData p
     {
         padding:2px 10%;
+    }
+
+    
+}
+
+@media screen and (max-width:700px)
+{
+    th
+    {
+        font-size: 1rem;
+    }
+    td
+    {
+        font-size: 0.8rem;
+    }
+
+    #my-table
+    {
+        width: 100%;
     }
 }

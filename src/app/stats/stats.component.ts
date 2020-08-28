@@ -126,14 +126,15 @@ export class StatsComponent implements OnInit {
 
           // console.log('data : ',data)
           this.currentStateDistricts.push(data);
+          console.log(this.currentStateDistricts)
         }
       }
     }
 
     // select first district of a country as default district selected
-    this.currentDistrictSelected = this.currentStateDistricts[0];
-    this.currentDistrictSelection()
-    this.barChartForDistrict(this.currentDistrictSelected);
+    // this.currentDistrictSelected = this.currentStateDistricts[0];
+    // this.currentDistrictSelection()
+    // this.barChartForDistrict(this.currentDistrictSelected);
   }
 
   // fired when district is selected from options

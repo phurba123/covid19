@@ -69,38 +69,40 @@
             </div>
         </div>
 
+        <!-- district data begins -->
         <h2 class="header-font" style="text-align: center;margin-top: 4vh;">{{currentStateData.region}} district status
         </h2>
 
         <!-- district selection options -->
-        <select *ngIf="currentStateDistricts.length>0" name="" id="district-selection" class="user-select p-font"
+        <!-- <select *ngIf="currentStateDistricts.length>0" name="" id="district-selection" class="user-select p-font"
             [(ngModel)]="currentDistrictName" (click)="currentDistrictSelection()">
             <option *ngFor="let district of currentStateDistricts" value="{{district.name}}">{{district.name}}</option>
-        </select>
+        </select> -->
 
-        <!-- covid data of currently selected district ,using flex-->
-        <div id="india-Data" *ngIf="currentDistrictSelected">
-            <!-- numeric data of selected district -->
-            <div id="allIndiaData">
-                <!-- current state name -->
-                <p class="header-font" style="margin-bottom: 4vh;">{{currentDistrictSelected.name}}</p>
+        <!-- covid data of districts of currently selected state -->
+        <div *ngIf="currentStateDistricts.length>0">
 
-                <div class="p-font">
-                    <p><span>total infected</span> : {{currentDistrictSelected.value.active}}</p>
-                    <p><span>recovered</span> : {{currentDistrictSelected.value.recovered}}</p>
-                    <p><span>deaths</span> : {{currentDistrictSelected.value.deceased}}</p>
-                </div>
-
-            </div>
-
-            <!-- chart visualization of selected state data -->
-            <div id="allIndiaChart">
-                <canvas baseChart [datasets]="barChartDistrict" [labels]="barChartLabelsDistrict"
-                    [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
-                    [chartType]="barChartType">
-                </canvas>
+            <div id="my-table">
+                <table>
+                    <tr class="h-font">
+                        <th>District</th>
+                        <th>active</th>
+                        <th>confirmed</th>
+                        <th>deceased</th>
+                        <th>recovered</th>
+                    </tr>
+    
+                    <tr *ngFor="let district of currentStateDistricts" class="p-font">
+                        <td>{{district.name}}</td>
+                        <td>{{district.value.active}}</td>
+                        <td>{{district.value.confirmed}}</td>
+                        <td>{{district.value.deceased}}</td>
+                        <td>{{district.value.recovered}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
+        
     </div>
 </main>
 
