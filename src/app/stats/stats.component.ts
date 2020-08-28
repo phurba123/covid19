@@ -126,7 +126,7 @@ export class StatsComponent implements OnInit {
 
           // console.log('data : ',data)
           this.currentStateDistricts.push(data);
-          console.log(this.currentStateDistricts)
+          // console.log(this.currentStateDistricts)
         }
       }
     }
